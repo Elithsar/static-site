@@ -1,7 +1,7 @@
 import unittest
 from htmlnode import HTMLNode
 
-class HTMLNodeTest(unittest.TestCase):
+class TestHTMLNode(unittest.TestCase):
     def test_ctor(self):
         a = HTMLNode("a", 1234, props={"href": "https://boot.dev"})
         node = HTMLNode("div", children=[a], props={"class": "centered"})
