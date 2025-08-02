@@ -14,7 +14,7 @@ def copy_and_clean_directory(source_dir, dest_dir):
         for item in os.listdir(dest_dir):
             item_path = os.path.join(dest_dir, item)
             if os.path.isdir(item_path):
-                os.rmdir(item_path)
+                shutil.rmtree(item_path)
             else:
                 os.remove(item_path)
     
@@ -22,8 +22,12 @@ def copy_and_clean_directory(source_dir, dest_dir):
         source_item_path = os.path.join(source_dir, item)
         dest_item_path = os.path.join(dest_dir, item)
 
-        shutil.copy(source_item_path, dest_item_path)
-        print(f"Copied: {source_item_path} to {dest_item_path}")
+        if os.path.isdir(source_item_path):
+            shutil.copytree(source_item_path, dest_item_path)
+            print(f"Copied directory: {source_item_path} to {dest_item_path}")
+        else:
+            shutil.copy2(source_item_path, dest_item_path)
+            print(f"Copied file: {source_item_path} to {dest_item_path}")
 
 if __name__ == "__main__":
     main()
