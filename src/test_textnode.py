@@ -23,12 +23,12 @@ class TestTextNode(unittest.TestCase):
 
         text_node = TextNode("Hello, world!", TextType.BOLD)
         html_node = text_node.text_node_to_html_node()
-        self.assertEqual(html_node.tag, "strong")
+        self.assertEqual(html_node.tag, "b")
         self.assertEqual(html_node.value, "Hello, world!")
 
         text_node = TextNode("Hello, world!", TextType.ITALIC)
         html_node = text_node.text_node_to_html_node()
-        self.assertEqual(html_node.tag, "em")
+        self.assertEqual(html_node.tag, "i")
         self.assertEqual(html_node.value, "Hello, world!")
 
         text_node = TextNode("Hello, world!", TextType.CODE)
